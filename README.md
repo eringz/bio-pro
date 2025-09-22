@@ -35,3 +35,34 @@
 ```bash
 git clone https://github.com/your-username/biopro.git
 cd biopro
+
+
+ +----------------+        +----------------+        +----------------+
+ |                |        |                |        |                |
+ |  Attendance    |        |  Face          |        |  Supabase DB   |
+ |  Device/Camera | -----> |  Recognition   | -----> |                |
+ |  (Scanner)     |        |  Module        |        |  Tables:       |
+ |                |        |  (Python/JS)   |        |  - users       |
+ +----------------+        +----------------+        |  - attendance  |
+        |                            |               |  - status      |
+        | Captured Face Image        | Match face    +----------------+
+        v                            | to templates
++----------------+                    v
+|                |             +----------------+
+| Client Server  | <-----------| Face matched   |
+|  (Node.js +    |   user_id,  | user_id        |
+|   Express)     |   face_id,  | confidence     |
+|                |   confidence| score          |
++----------------+             +----------------+
+        |
+        | Logs Attendance
+        v
++---------------------------+
+| Attendance Table Record   |
+| - user_id                 |
+| - datetime (auto)         |
+| - status_id (Time In/Out) |
+| - device_no               |
+| - face_id                 |
+| - confidence_score        |
++---------------------------+
