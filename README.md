@@ -8,7 +8,7 @@
 
 ## Features
 
-- **Biometric Attendance Tracking:** Capture employee check-ins and check-outs via biometric devices.
+- **Biometric Attendance Tracking:** Capture employee time-ins and time-outs via biometric devices.
 - **Multi-Location Support:** Track attendance from multiple devices and locations.
 - **Real-Time Dashboard:** Monitor employee presence and attendance statistics live.
 - **Role-Based Access:** Admin, HR, and Employee roles with custom permissions.
