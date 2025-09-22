@@ -1,35 +1,37 @@
-# 📌 Bio Pro – ERD (Entity Relationship Diagram)
+# BioPro
 
-```mermaid
-erDiagram
-    USERS {
-        int user_id PK
-        string name
-        string email
-        string password
-        string role
-        int department_id FK
-    }
-    DEPARTMENTS {
-        int department_id PK
-        string name
-    }
-    SHIFTS {
-        int shift_id PK
-        int department_id FK
-        time start_time
-        time end_time
-    }
-    ATTENDANCE_LOGS {
-        int log_id PK
-        int user_id FK
-        int shift_id FK
-        datetime timestamp
-        string action
-        string status
-    }
+![BioPro Logo](./assets/logo.png)
 
-    USERS }|--|| DEPARTMENTS : "belongs to"
-    USERS ||--o{ ATTENDANCE_LOGS : "has"
-    SHIFTS ||--o{ ATTENDANCE_LOGS : "logs for"
-    DEPARTMENTS ||--o{ SHIFTS : "has"
+**BioPro** is a cutting-edge biometric attendance and employee management system designed to streamline workforce tracking and enhance organizational efficiency.
+
+---
+
+## 🚀 Features
+
+- **Biometric Attendance Tracking:** Capture employee check-ins and check-outs via biometric devices.
+- **Multi-Location Support:** Track attendance from multiple devices and locations.
+- **Real-Time Dashboard:** Monitor employee presence and attendance statistics live.
+- **Role-Based Access:** Admin, HR, and Employee roles with custom permissions.
+- **Reports & Analytics:** Generate detailed attendance and performance reports.
+- **Face Recognition Integration (Planned):** Enhance security with facial recognition check-ins.
+
+---
+
+## 🛠 Tech Stack
+
+- **Backend:** Node.js, Express.js
+- **Database:** Supabase (PostgreSQL)
+- **Frontend:** React.js / Next.js
+- **Authentication:** JWT & Role-Based Access Control
+- **APIs:** RESTful endpoints for attendance management
+- **Other Tools:** Git, GitHub Actions for CI/CD
+
+---
+
+## ⚡ Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/biopro.git
+cd biopro
