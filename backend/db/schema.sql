@@ -17,6 +17,7 @@ CREATE TABLE users (
     name VARCHAR (100) NOT NULL,
     email VARCHAR (100) NOT NULL,
     role VARCHAR (50) DEFAULT 'employee',
+    face_template TEXT,
     created_at TIMESTAMP DEFAULT NOW()
 );
 
@@ -44,6 +45,8 @@ CREATE TABLE devices (
 CREATE TABLE attendance (
     id SERIAL PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    face_id VARCHAR(255),
+    confidence_score FLOAT,
     datetime TIMETAMP NOT NULL,
     device_no INT NOT NULL,
     status INT NOT NULL REFERENCES attendance_status(id)

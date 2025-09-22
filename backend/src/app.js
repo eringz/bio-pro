@@ -1,9 +1,11 @@
     import express from 'express';
     import users from './routes/users.js';
+    import attendance from './routes/attendance.js'; 
 
     const app = express();
 
     app.use(express.json());
-    app.use('/api', users);
+    app.use('/users', users);
+    app.use('/attendance', attendance);
 
     export default app;

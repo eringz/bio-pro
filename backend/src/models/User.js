@@ -1,11 +1,12 @@
 import supabase from '../config/supabase.js';
 
 class User {
-    constructor ({id, name, email, role} = {}) {
+    constructor ({id, name, email, role, face_template} = {}) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.role = role;    
+        this.face_template = face_template;
     }
 
     static async all () {
@@ -20,7 +21,7 @@ class User {
         const { data, error } = await supabase.from('users').select('*').eq('id', id).single();
 
         if (error) throw error;
-        return  new User(data);
+        return new User(data);
     }
 
     // Create a new User

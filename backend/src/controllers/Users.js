@@ -11,11 +11,23 @@ class Users {
         }
     }
 
+    // Get users by Id
+    static async getUserById (req, res) {
+        try {
+            const { id } = req.params;
+            const user = await User.findById(id);
+
+            res.json(user);
+        } catch (err) {
+            res.status(400).json({ error: err.message });
+        }
+    }
+
     // Add a new user
     static async addUser (req, res) {
         try {
             const { name, email, role } = req.body;
-            const newUser = await User.create({name, email, role});
+            const newUser = await User.create({ name, email, role, face_template });
             res.json(newUser);
         } catch (err) {
             res.status(400).json({ error: err.message });
@@ -45,6 +57,18 @@ class Users {
 
             res.json({ message: `${name} deleted`, name});
         } catch {
+            res.status(400).json({ error: err.message });
+        }
+    }
+
+    // Optional: update face template separately
+    static async updateFace (req, res) {
+        try {
+            const { id } = req.params;
+            const { face_template } = req.body;
+            const updateUser = await User.update(id, { face_template });
+            res.json(updateUser);
+        } catch (err) {
             res.status(400).json({ error: err.message });
         }
     }
