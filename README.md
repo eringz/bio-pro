@@ -6,7 +6,7 @@
 
 ---
 
-## 🚀 Features
+## Features
 
 - **Biometric Attendance Tracking:** Capture employee check-ins and check-outs via biometric devices.
 - **Multi-Location Support:** Track attendance from multiple devices and locations.
@@ -17,7 +17,7 @@
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Backend:** Node.js, Express.js
 - **Database:** Supabase (PostgreSQL)
@@ -28,7 +28,7 @@
 
 ---
 
-## ⚡ Installation
+## Installation
 
 1. Clone the repository:
 
