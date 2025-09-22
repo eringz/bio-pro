@@ -1,3 +1,6 @@
+# 📌 Bio Pro – ERD (Entity Relationship Diagram)
+
+```mermaid
 erDiagram
     USERS {
         int user_id PK
