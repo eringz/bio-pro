@@ -1,8 +1,9 @@
 import Attendance from '../models/Attendance.js';
+import cv from "opencv4nodejs";
 
 class Attendances {
     // Fetch all attendance records
-    static async fetchAll (req, res) {
+    static async fetchAttendance (req, res) {
         try {
             const records = await Attendance.all();
             res.json(records);
@@ -15,6 +16,20 @@ class Attendances {
     static async addRecord (req, res) {
 
         try {
+            /**
+             * Starting Camera
+             */
+            const { image } = req.body;
+
+            // Decode base64 -> Buffer -> Mat
+            const base64Data = image.replace(/)
+
+
+            /**
+             * Add Record
+             * 
+             */
+
             const { user_id, device_no, status_id, face_id, confidence_score } = req.body;
             const datetime = new Date();
 

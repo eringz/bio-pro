@@ -1,4 +1,4 @@
-import supabase from '@supabase/supabase-js';
+import supabase from '../config/supabase.js';
 
 class Attendance {
     constructor ({ id, user_id, datetime, device_no, status_id, face_id, confidence_score, status_name } = {})  {
@@ -20,10 +20,11 @@ class Attendance {
             user_id,
             datetime,
             device_no,
-            status_id,
+            status_id:attendance_status(id),
             face_id,
-            attendance_status:attendance_status(status_name)
+            attendance_status:attendance_status(status_name)    
         `);
+        
 
         if (error) throw error;
 
@@ -49,7 +50,7 @@ class Attendance {
             user_id,
             datetime,
             device_no,
-            status_id,
+            status_id:attendance_status(id),
             face_id,
             attendance_status:attendance_status(status_name)    
         `)
@@ -78,7 +79,7 @@ class Attendance {
             user_id,
             datetime,
             device_no,
-            status_id,
+            status_id:attendance_status(id),
             face_id,
             confidence_score,
             attendance_status:attendance_status(status_name)    
@@ -109,7 +110,7 @@ class Attendance {
             user_id,
             datetime,
             device_no,
-            status_id,
+            status_id:attendance_status(id),
             face_id,
             attendance_status:attendance_status(status_name)    
         `)
