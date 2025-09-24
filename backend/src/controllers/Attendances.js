@@ -1,5 +1,5 @@
 import Attendance from '../models/Attendance.js';
-import cv from "opencv4nodejs";
+import FaceService from "../services/Face.js";
 
 class Attendances {
     // Fetch all attendance records
@@ -14,29 +14,18 @@ class Attendances {
 
     // Add a new attendance record ( Time in / Time out)
     static async addRecord (req, res) {
-
         try {
-            /**
-             * Starting Camera
-             */
-            const { image } = req.body;
 
-            // Decode base64 -> Buffer -> Mat
-            const base64Data = image.replace(/)
-
-
-            /**
-             * Add Record
-             * 
-             */
-
-            const { user_id, device_no, status_id, face_id, confidence_score } = req.body;
+            const { user_id, device_no, status_id, face_id } = req.body;
             const datetime = new Date();
 
-            // Optional enforce threshold
-            if (confidence_score < 0.9) {
-                return res.status(400).json({ error: `Face not recognized! Try Again` });
+            // Detect face (AI Service)
+            const { detected, confidence } = await FaceService.detectFace(image);
+
+            if (!detected || confidence < 0.9) {
+                return res.status(400).json({ error: "Face not recognized!"});
             }
+
 
             const newRecord = await Attendance ({
                 user_id,
@@ -44,7 +33,7 @@ class Attendances {
                 device_no,
                 status_id,
                 face_id,
-                confidence_score
+                confidence_score: confidence,
             });
         
             res.json(newRecord);

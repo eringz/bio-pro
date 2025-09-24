@@ -3,6 +3,7 @@
     import attendance from './routes/attendance.js'; 
 
     const app = express();
+    app.use(express.json({ limit: "10mb" }));
 
     app.use(express.json());
     app.use('/users', users);
