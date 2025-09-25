@@ -15,6 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Bio Pro - Smart Attendance & Analytics System",
   description: "Bio Pro is a smart attendance system that leverages Face Recognition (mock-up via laptop camera) and is designed to evolve with Fingerprint/IoT hardware integration in the future. It provides an end-to-end solution from attendance logging to payroll-ready reporting.",
+  icons: {
+    icon: "/bio-pro.ico",
+  }
+
 };
 
 export default function RootLayout({
