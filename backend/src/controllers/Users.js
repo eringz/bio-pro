@@ -26,7 +26,8 @@ class Users {
     // Add a new user
     static async addUser (req, res) {
         try {
-            const { name, email, role } = req.body;
+            const { name, email, role, face_template } = req.body;
+            console.log(`Face Template: ${face_template}`);
             const newUser = await User.create({ name, email, role, face_template });
             res.json(newUser);
         } catch (err) {

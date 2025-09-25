@@ -86,6 +86,8 @@ class Attendance {
         `)
         .single();
 
+        console.log(`Attendance Model Data: ${data}`);
+
         if (error) throw error;
 
         return new Attendance ({
@@ -97,6 +99,9 @@ class Attendance {
             confidence_score: data.confidence_score,
             status_name: data.attendance_status.status_name
         });
+        console.log(`Attendance Model Data: ${data}`);
+
+        // return data;
     }
 
     // Update a record 

@@ -16,8 +16,12 @@ class Attendances {
     static async addRecord (req, res) {
         try {
 
-            const { user_id, device_no, status_id, face_id } = req.body;
+            const { user_id, face_id, device_no, status_id, image } = req.body;
             const datetime = new Date();
+
+            if (!image) {
+                return res.status(400).json({error: "Image is required"});
+            }
 
             // Detect face (AI Service)
             const { detected, confidence } = await FaceService.detectFace(image);
@@ -26,8 +30,7 @@ class Attendances {
                 return res.status(400).json({ error: "Face not recognized!"});
             }
 
-
-            const newRecord = await Attendance ({
+            const newRecord = await Attendance.create({
                 user_id,
                 datetime,
                 device_no,
@@ -38,7 +41,7 @@ class Attendances {
         
             res.json(newRecord);
         } catch (err) {
-            res.status(400).json({ error: err.message });
+            res.status(400).json({ error: `Attendances addRecord Error ${err.message}` });
         }
         
     }

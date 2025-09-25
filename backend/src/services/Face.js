@@ -20,7 +20,7 @@ class FaceService {
         const buffer = Buffer.from(base64Data, "base64");
 
         const img = await loadImage(buffer);
-        const detections = await faceapi.detectAllFacec(img);
+        const detections = await faceapi.detectAllFaces(img);
 
         if (!detections.length) {
             return { detected: false, confidence: 0 };
