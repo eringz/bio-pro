@@ -1,5 +1,8 @@
+const BASE_URL = "http://localhost:5000";
+
 // Registration API
 export async function uploadFace(image: string) {
+    // return request(`${BASE_URL}/`, { image });
     return request("/api/face/upload", { image });
 }
 
@@ -10,19 +13,20 @@ export async function verifyFace(image: string) {
 
 // Save full user registration + face template
 export async function registerUser(data: {
-    firs_name: string;
+    first_name: string;
     last_name: string;
     middle_name?: string;
     email_address: string;
     role: string;
     face_template: string;
 }) {
-    return request("/api/users/register", data);
+    return request(`${BASE_URL}/users`, data);
 };
 
 
 // Generic request wrapper
 async function request(url: string, body: object) {
+    console.log(`Request: ${body}`);
     try {
         const res = await fetch(url, {
             method: "POST",

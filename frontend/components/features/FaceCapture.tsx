@@ -3,10 +3,11 @@
 import { useRef,  useEffect } from "react";
 
 interface Props {
+    size?: number;
     onCapture: (faceTemplate: string) => void;
 }
 
-export default function FaceCapture({ onCapture } : Props) {
+export default function FaceCapture({ size, onCapture } : Props) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     
@@ -62,8 +63,8 @@ export default function FaceCapture({ onCapture } : Props) {
                 ref={videoRef}
                 autoPlay
                 muted
-                width={1080}
-                height={720}
+                width={size}
+                height={size}
                 className="rounded border shadow"
             />
             <canvas 
