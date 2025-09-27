@@ -26,9 +26,10 @@ class Users {
     // Add a new user
     static async addUser (req, res) {
         try {
-            const { name, email, role, face_template } = req.body;
+            const { first_name, last_name, middle_name, email_address, contact_number, role, face_template } = req.body;
+            console.log('Incoming Users Controller: ', req.body);
             console.log(`Face Template: ${face_template}`);
-            const newUser = await User.create({ name, email, role, face_template });
+            const newUser = await User.create({ first_name, middle_name, last_name, email_address, contact_number, role, face_template });
             res.json(newUser);
         } catch (err) {
             res.status(400).json({ error: err.message });
@@ -39,8 +40,8 @@ class Users {
     static async editUser (req, res) {
         try {
             const { id } = req.params;
-            const {name, email, role} = req.body;
-            const updateUser = await User.update(id, { name, email, role });
+            const {first_name, middle_name, last_name, email_address, contact_number, role} = req.body;
+            const updateUser = await User.update(id, { first_name, middle_name, last_name, email_address, contact_number, role });
 
             res.json(updateUser);
         } catch (err) {
@@ -52,11 +53,11 @@ class Users {
     static async removeUser (req, res) {
         try {
             const { id } = req.body;
-            const { name } = await User.findById(id);
+            const { first_name } = await User.findById(id);
 
             await User.delete(id);
 
-            res.json({ message: `${name} deleted`, name});
+            res.json({ message: `${first_name} deleted`});
         } catch {
             res.status(400).json({ error: err.message });
         }

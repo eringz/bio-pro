@@ -14,7 +14,7 @@ class Attendance {
 
     static async all () {
         const { data, error } = await supabase
-        .from('attendance')
+        .from('attendances')
         .select(`
             id,
             user_id,
@@ -44,7 +44,7 @@ class Attendance {
     // Find a record by ID
     static async findById (id) {
         const { data, error } = await supabase
-        .from('attendance')
+        .from('attendances')
         .select(`
             id,
             user_id,
@@ -70,44 +70,26 @@ class Attendance {
     }
 
     // Create attendance record
-    static async create ({ user_id, datetime, device_no, status_id, face_id, confidence_score, status_name}) {
+    static async create ({ user_id, datetime, device_no, status_id, face_id, confidence_score}) {
         const { data, error } = await supabase
-        .from('attendance')
-        .insert([{ user_id, datetime, device_no, status_id, face_id, confidence_score, status_name }])
-        .select(`
-            id,
-            user_id,
-            datetime,
-            device_no,
-            status_id:attendance_status(id),
-            face_id,
-            confidence_score,
-            attendance_status:attendance_status(status_name)    
-        `)
+        .from('attendances')
+        .insert([{ user_id, datetime, device_no, status_id, face_id, confidence_score }])
+        .select()
         .single();
 
         console.log(`Attendance Model Data: ${data}`);
 
         if (error) throw error;
 
-        return new Attendance ({
-            id: data.id,
-            user_id: data.user_id,
-            device_no: data.device_no,
-            status_id: data.status_id,
-            face_id: data.face_id,
-            confidence_score: data.confidence_score,
-            status_name: data.attendance_status.status_name
-        });
-        console.log(`Attendance Model Data: ${data}`);
+        console.log('Inserted attendance', data)
 
-        // return data;
+        return new Attendance (data);
     }
 
     // Update a record 
     static async update (id, updates) {
         const { data, error } = await supabase
-        .from('attendance')
+        .from('attendances')
         .update(updates)
         .eq('id', id)
         .select(`
@@ -136,7 +118,7 @@ class Attendance {
 
     // Delete a record
     static async delete (id) {
-        const { data, error } = await supabase.from('attendance').delete().eq('id', id).single();
+        const { data, error } = await supabase.from('attendances').delete().eq('id', id).single();
 
         if (error) throw error;
 

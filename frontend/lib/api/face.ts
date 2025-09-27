@@ -8,7 +8,13 @@ export async function uploadFace(image: string) {
 
 // Verify face (for attendance)
 export async function verifyFace(image: string) {
-    return request("/api/face/verify", { image });
+  return request(`${BASE_URL}/attendances`, {
+    user_id: 1,        // test muna
+    status_id: 1,      // "Time in"
+    device_no: 1,
+    face_id: 1,
+    image,
+  });
 }
 
 // Save full user registration + face template
@@ -26,13 +32,19 @@ export async function registerUser(data: {
 
 // Generic request wrapper
 async function request(url: string, body: object) {
-    console.log(`Request: ${body}`);
+    console.log("Sending request to:", url, body);
     try {
         const res = await fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
         })
+
+          if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+
+          const data = await res.json();
+          console.log(`Response: ${data}`);
+          return data;
     } catch (err) {
         console.error(`Request to ${url} failed: `, err);
         return null;

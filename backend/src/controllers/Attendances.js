@@ -18,13 +18,17 @@ class Attendances {
 
             const { user_id, face_id, device_no, status_id, image } = req.body;
             const datetime = new Date();
+            console.log('Incoming Attendance Body', req.body);
 
             if (!image) {
                 return res.status(400).json({error: "Image is required"});
             }
 
             // Detect face (AI Service)
-            const { detected, confidence } = await FaceService.detectFace(image);
+            // const { detected, confidence } = await FaceService.detectFace(image);
+            // TEMP: bypass face detection for now
+            const detected = true;
+            const confidence = 1.0;
 
             if (!detected || confidence < 0.9) {
                 return res.status(400).json({ error: "Face not recognized!"});

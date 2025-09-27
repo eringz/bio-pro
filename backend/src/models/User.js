@@ -1,10 +1,13 @@
 import supabase from '../config/supabase.js';
 
 class User {
-    constructor ({id, name, email, role, face_template} = {}) {
+    constructor ({id, first_name, last_name, middle_name, email_address, contact_number, role, face_template} = {}) {
         this.id = id;
-        this.name = name;
-        this.email = email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.middle_name = middle_name;
+        this.email = email_address;
+        this.contact_number = contact_number
         this.role = role;    
         this.face_template = face_template;
     }

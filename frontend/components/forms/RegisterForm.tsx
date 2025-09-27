@@ -22,8 +22,11 @@ export default function RegisterForm() {
     };
 
     const handleFaceCapture = (faceTemplate: string) => {
-        setForm({ ...form, face_template: faceTemplate});
-        console.log(`HandleFaceCapture: ${form.face_template}`);
+        setForm(prev => {
+            const updated = {...prev, face_template: faceTemplate};
+            console.log(`HandleFaceCapture: ${updated.face_template}`);
+            return updated;
+        });
     }
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -34,7 +37,10 @@ export default function RegisterForm() {
         }
         
         try {
-
+            setStatus("Registering user....");
+            const res = await registerUser(form);
+            setStatus("Registration successful!");
+            console.log("Server response:", res);
         } catch (err) {
             console.error(err);
             setStatus("Server error");
@@ -44,7 +50,7 @@ export default function RegisterForm() {
     return (  
         <form 
             onSubmit={handleSubmit}
-            className="min-w-screen flex flex-cols justify-between  gap-4 p-4 w-full max-w-md mx-auto"
+            className="min-w-screen flex  justify-between  gap-4 p-4 w-full max-w-md mx-auto"
          >
               
             {/** Face Capture Section */}        
