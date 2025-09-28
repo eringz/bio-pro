@@ -1,9 +1,11 @@
 import supabase from '../config/supabase.js';
 
 class Attendance {
-    constructor ({ id, user_id, datetime, device_no, status_id, face_id, confidence_score, status_name } = {})  {
+    constructor ({ id, user_id, first_name, last_name,  datetime, device_no, status_id, face_id, confidence_score, status_name } = {})  {
         this.id = id;
         this.user_id = user_id;
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.datetime = datetime,
         this.device_no = device_no;
         this.status_id = status_id;
@@ -39,6 +41,39 @@ class Attendance {
         }));
 
         
+    }
+
+    // Find records by date (yyyy-mm-dd)
+    static async findByDate(date) {
+        const { data, error } = await supabase
+            .from('attendances')
+            .select(`
+                id,
+                user_id,
+                datetime,
+                device_no,
+                status_id:attendance_status(id),
+                face_id,
+                attendance_status:attendance_status(status_name),
+                users!inner(first_name,last_name)      
+            `)
+            .gte('datetime', `${date} 00:00:00`)  // start of day
+            .lte('datetime', `${date} 23:59:59`); // end of day
+
+        if (error) throw error;
+
+
+        return data.map(record => new Attendance({
+            id: record.id,
+            user_id: record.user_id,
+            datetime: record.datetime,
+            device_no: record.device_no,
+            status_id: record.status_id,
+            face_id: record.face_id,
+            status_name: record.attendance_status.status_name,
+            first_name: record.users?.first_name,
+            last_name: record.users?.last_name
+        }));
     }
 
     // Find a record by ID

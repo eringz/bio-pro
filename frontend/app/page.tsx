@@ -1,18 +1,37 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import FaceCapture from "@/components/features/FaceCapture";
 import { verifyFace } from "@/lib/api/face";
-// import dynamic from "next/dynamic";
-
-// const FaceCapture = dynamic(() => import("./components/FaceCapture"), {
-//   ssr: false,
 
 export default function Home () {
+  const [records, setRecords] = useState<any[]>([]);
+  const [status, setStatus] = useState("");
+
+  // Fetch attendance today
+  const fetchRecords = async () => {
+    try {
+      const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+      const res = await fetch(`http://localhost:5000/attendances/date/${today}`);
+      // const res = await fetch(`http://localhost:5000/attendances/date/2025-09-27`);
+      console.log(res);
+      if (!res.ok) throw new Error("Failed to fetch records");
+      const data = await res.json();
+      setRecords(data);
+    } catch (err) {
+      console.error("❌ Error fetching records:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchRecords();
+  }, []);
   // Face Template Callback
   const handleCapture = async (faceData: string) => {
     console.log("Captured face data:", faceData.substring(0, 50));
 
     const result = await verifyFace(faceData);
+    await fetchRecords();  
 
     if (result) {
       console.log("Face Verification result:", result);
@@ -22,14 +41,65 @@ export default function Home () {
 
   }
 
+  const today = new Date();
+  const week_options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    // year: 'numeric',
+    // month: 'short',
+    // day: 'numeric',
+    // timeZone: 'Asia/Manila', // <- dito
+  }; 
+  const date_options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'Asia/Manila', // <- dito
+  }; 
+
+  const time_options: Intl.DateTimeFormatOptions = {  
+    timeStyle: 'long',
+    timeZone: 'Asia/Manila', // <- dito
+  }; 
+  const dayName = today.toLocaleDateString('en-PH', week_options);
+  const dateString = today.toLocaleDateString('en-PH', date_options); // YYYY-MM-DD
+  const time = new Date(Date.now()).getHours();
   return (
-    <main className="min-h-screen min-w-screen">
+    <main className="flex flex-cols gap-12 justify-between min-h-screen min-w-screen p-8 space-y-8">
+      {/* Face Capture */}
       <div>
-        <h2 className="text-xl font-bold mb-4">Capture Face</h2>
-        <FaceCapture  size={480} onCapture={handleCapture}/>
+        <FaceCapture size={700} onCapture={handleCapture} />
+        {status && <p className="mt-4 text-lg text-center">{status}</p>}
       </div>
 
-      
+      {/* Attendance Announce Section */}
+      <div className="w-full max-w-4xl mx-auto">
+        <h2 className="text-xl font-bold mb-4">{dateString} ({dayName}) - Attendance {time}</h2>
+
+        {records.length === 0 ? (
+          <p className="text-gray-500">No attendance yet.</p>
+        ) : (
+          <table className="min-w-full bg-white border border-gray-200 rounded shadow">
+            <thead>
+              <tr className="bg-gray-100 border-b">
+                <th className="py-2 px-4 text-left">ID</th>
+                <th className="py-2 px-4 text-left">Name</th>
+                <th className="py-2 px-4 text-left">Status</th>
+                <th className="py-2 px-4 text-left">Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {records.map((r, i) => (
+                <tr key={i} className="border-b hover:bg-gray-50">
+                  <td className="py-2 px-4">{r.id}</td>
+                  <td className="py-2 px-4">{r.first_name} {r.last_name}</td>
+                  <td className="py-2 px-4">{r.status_name}</td>
+                  <td className="py-2 px-4">{new Date(r.datetime).toLocaleTimeString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </main>
-  )
+  );
 }

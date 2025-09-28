@@ -71,12 +71,13 @@ export default function FaceCapture({ size, onCapture } : Props) {
                 ref={canvasRef}
                 // width={720}
                 // height={720}
-                className="hidden"
+                className="hidden shadow"
             />
             <div className="flex gap-2">
                 <button
+                    type="button"
                     onClick={captureFace}
-                    className="px-4 py-2 bg-green-600 text-white rounded-lg shadow"
+                    className="px-4 py-2 bg-[#006D5A] hover:bg-sky-700 text-white rounded-lg shadow"
                 >
                     Capture Face
                 </button>

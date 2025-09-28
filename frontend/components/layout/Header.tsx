@@ -19,9 +19,7 @@ export default function Header() {
                 
                 <div className="hidden xl:flex items-center">
                     <Nav />
-                </div>
-
-                
+                </div>                
             </div>
         </header>
     )

@@ -50,6 +50,17 @@ class Attendances {
         
     }
 
+    // Fetch attendance by date
+    static async fetchByDate(req, res) {
+        try {
+            const { date } = req.params;
+            const records = await Attendance.findByDate(date);
+            res.json(records);
+        } catch (err) {
+            res.status(500).json({ error: `Attendances fetchByDate Error ${err.message}` });
+        }
+    }
+
     // Edit a record (cannot change confidence score)
     static async editRecord (req, res) {
         try {
