@@ -17,7 +17,10 @@ class Attendances {
         try {
 
             const { user_id, face_id, device_no, status_id, image } = req.body;
-            const datetime = new Date();
+            const datetime = new Date().toLocaleString("en-CA", {
+                timeZone: "Asia/Manila",
+                hour12: false,
+            }).replace(",", "");
             console.log('Incoming Attendance Body', req.body);
 
             if (!image) {

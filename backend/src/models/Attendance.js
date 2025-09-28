@@ -112,11 +112,7 @@ class Attendance {
         .select()
         .single();
 
-        console.log(`Attendance Model Data: ${data}`);
-
         if (error) throw error;
-
-        console.log('Inserted attendance', data)
 
         return new Attendance (data);
     }

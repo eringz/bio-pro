@@ -10,7 +10,7 @@ export async function uploadFace(image: string) {
 export async function verifyFace(image: string) {
   return request(`${BASE_URL}/attendances`, {
     user_id: 1,        // test muna
-    status_id: 1,      // "Time in"
+    status_id: 0,      // "Time in"
     device_no: 1,
     face_id: 1,
     image,
