@@ -1,6 +1,6 @@
 # BioPro
 
-![BioPro Logo](./assets/logo.png)
+![BioPro Logo](./bio-pro.png)
 
 **BioPro** is a cutting-edge biometric attendance and employee management system designed to streamline workforce tracking and enhance organizational efficiency.
 
