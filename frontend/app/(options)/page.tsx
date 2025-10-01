@@ -1,5 +1,4 @@
-
-export default function Options() {
+export default function OptionsPage() {
 
     const options = [
         {label: "Fingerprint", action:"fingerprint"},
