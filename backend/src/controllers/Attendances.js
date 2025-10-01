@@ -1,6 +1,7 @@
 import Attendance from '../models/Attendance.js';
 import FaceService from "../services/Face.js";
 
+
 class Attendances {
     // Fetch all attendance records
     static async fetchAttendance (req, res) {
@@ -17,11 +18,8 @@ class Attendances {
         try {
 
             const { user_id, face_id, device_no, status_id, image } = req.body;
-            const datetime = new Date().toLocaleString("en-CA", {
-                timeZone: "Asia/Manila",
-                hour12: false,
-            }).replace(",", "");
-            console.log('Incoming Attendance Body', req.body);
+            // const datetimeStr = new Date().toLocaleString("en-PH", { timeZone: 'Asia/Manila'});
+            const datetime = new Date();
 
             if (!image) {
                 return res.status(400).json({error: "Image is required"});

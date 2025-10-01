@@ -9,6 +9,9 @@ export default function Home () {
   const [status, setStatus] = useState("");
   const [time, setTime] = useState("");
 
+
+
+
   const formatPHTime = (dateString: string): string => {
     return new Date(dateString + "Z")
       .toLocaleString("en-CA", {
@@ -115,7 +118,7 @@ export default function Home () {
                   <td className="py-2 px-4">{r.id}</td>
                   <td className="py-2 px-4">{r.first_name} {r.last_name}</td>
                 <td className={`${(r.status_name === "Time In") ? 'text-[#006D5A]' : 'text-[#4C0000]'} "py-2 px-4"`}>{r.status_name}</td>
-                  <td className="py-2 px-4">{new Date(r.datetime).toLocaleTimeString()}</td>
+                  <td className="py-2 px-4">{new Date(r.datetime).toLocaleTimeString("en-PH", {timeZone: "Asia/Manila", hour: "numeric", minute: "numeric", second: "numeric", hour12: true})}</td>
                 </tr>
               ))}
             </tbody>
