@@ -3,6 +3,7 @@
 import { useState } from "react";
 import FaceCapture from "@/components/features/FaceCapture";
 import { registerUser } from "@/lib/api/face";
+import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 
 export default function RegisterForm() {
     const [form, setForm] = useState({
@@ -16,6 +17,7 @@ export default function RegisterForm() {
     });
 
     const [status, setStatus] = useState("");
+    const [selected, setSelected] = useState()
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -53,14 +55,14 @@ export default function RegisterForm() {
     return (  
         <form 
             onSubmit={handleSubmit}
-            className="min-w-screen flex  justify-between  gap-4 p-4 w-full max-w-md mx-auto"
+            className="flex justify-between gap-4 p-4 w-full mx-auto"
          >
               
             {/** Face Capture Section */}        
-            <div className="mt-0">
+            <div className="p-8 mt-0 shadow-lg rounded-lg">
                 <FaceCapture size={960} onCapture={handleFaceCapture}  />
             </div>
-            <div className="flex flex-col gap-10 w-full p-20 max-w-2xl mx-auto border border-gray-300 rounded-xl">
+            <div className="flex flex-col gap-10 w-full p-20 max-w-2xl mx-auto rounded-xl shadow-lg">
                 <h1 className="col-span-2 text-3xl font-bold text-center text-[#184239] ">Registration Form</h1> 
                 <input type="text" name="first_name" placeholder="First Name" value={form.first_name} onChange={handleChange} className="p-2 border border-gray-300 rounded " required />
                 <input type="text" name="middle_name" placeholder="Middle Name" value={form.middle_name} onChange={handleChange} className="p-2 border border-gray-300 rounded" />
@@ -68,10 +70,10 @@ export default function RegisterForm() {
                 <input type="email" name="email_address" placeholder="Email Address" value={form.email_address} onChange={handleChange} className="p-2 border border-gray-300 rounded" required />
                 <input type="tel" name="contact_number" placeholder="Contact Number" value={form.contact_number} onChange={handleChange} className="p-2 border border-gray-300 rounded" required />
                 <input type="text" name="role" placeholder="Role" value={form.role} onChange={handleChange} className="p-2 border border-gray-300 rounded" required />
-
+                
                 <button 
-                type="submit" 
-                className="w-full px-4 py-2 bg-[#006D5A] text-white rounded-lg shadow"
+                    type="submit" 
+                    className="w-full px-4 py-2 bg-[#006D5A] text-white rounded-lg shadow"
                 >
                     Register User
                 </button>
