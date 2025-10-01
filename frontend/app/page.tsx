@@ -24,7 +24,9 @@ export default function Home () {
   // Fetch attendance today
   const fetchRecords = async () => {
     try {
-      const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+      const today = new Date().toLocaleDateString("en-CA", {timeZone: "Asia/Manila"}).split("T")[0]; // YYYY-MM-DD
+      // const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+      alert(today);
       const res = await fetch(`http://localhost:5000/attendances/date/${today}`);
 
       if (!res.ok) throw new Error("Failed to fetch records");
@@ -50,31 +52,21 @@ export default function Home () {
     if (result) {
       console.log("Face Verification result:", result);
     } else {
-      console.error("Verificaion failed or no connection.");
+      console.error("Verification failed or no connection.");
     }
 
   }
 
   const today = new Date();
-  const week_options: Intl.DateTimeFormatOptions = {
-    weekday: 'long',
-  }; 
-  const date_options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    timeZone: 'Asia/Manila', // <- dito
-  }; 
-
   
-  const dayName = today.toLocaleDateString('en-PH', week_options);
-  const dateString = today.toLocaleDateString('en-PH', date_options); // YYYY-MM-DD
+  const dayName = today.toLocaleDateString('en-PH', {weekday: 'short'});
+  const dateString = today.toLocaleDateString('en-PH', {year: 'numeric', month: 'short', day: 'numeric' }); // YYYY-MM-DD
 
 
   return (
     <main className="flex flex-cols gap-12 justify-between">
       {/* Face Capture */}
-      <div className="bg-white p-12 my-4 h-full max-h-48 rounded-2xl shadow-lg hover:shadow-xl transition">
+      <div className="bg-white p-12 my-4 max-h-fit rounded-2xl shadow-lg hover:shadow-xl transition">
         <FaceCapture size={700} onCapture={handleCapture} />
         {status && <p className="mt-4 text-lg text-center">{status}</p>}
       </div>

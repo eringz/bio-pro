@@ -43,38 +43,45 @@ class Attendance {
         
     }
 
-    // Find records by date (yyyy-mm-dd)
-    static async findByDate(date) {
-        const { data, error } = await supabase
-            .from('attendances')
-            .select(`
-                id,
-                user_id,
-                datetime,
-                device_no,
-                status_id:attendance_status(id),
-                face_id,
-                attendance_status:attendance_status(status_name),
-                users!inner(first_name,last_name)      
-            `)
-            .gte('datetime', `${date} 00:00:00`)  // start of day
-            .lte('datetime', `${date} 23:59:59`); // end of day
+        // Find records by date (yyyy-mm-dd)
+        static async findByDate(date) {
+            const manilaStart = new Date(`${date}T00:00:00+08:00`);
+            const manilaEnd = new Date(`${date}T23:59:59+08:00`);
+            
+            // Convert to UTC ISO string
+            const utcStart = manilaStart.toISOString(); // e.g., 2025-09-30T16:00:00.000Z
+            const utcEnd = manilaEnd.toISOString();  
 
-        if (error) throw error;
+            const { data, error } = await supabase
+                .from('attendances')
+                .select(`
+                    id,
+                    user_id,
+                    datetime,
+                    device_no,
+                    status_id:attendance_status(id),
+                    face_id,
+                    attendance_status:attendance_status(status_name),
+                    users!inner(first_name,last_name)      
+                `)
+                .gte('datetime', `${utcStart}`)  // start of day
+                .lte('datetime', `${utcEnd}`); // end of day
+
+            if (error) throw error;
 
 
-        return data.map(record => new Attendance({
-            id: record.id,
-            user_id: record.user_id,
-            datetime: record.datetime,
-            device_no: record.device_no,
-            status_id: record.status_id,
-            face_id: record.face_id,
-            status_name: record.attendance_status.status_name,
-            first_name: record.users?.first_name,
-            last_name: record.users?.last_name
-        }));
-    }
+            return data.map(record => new Attendance({
+                id: record.id,
+                user_id: record.user_id,
+                datetime: record.datetime,
+                device_no: record.device_no,
+                status_id: record.status_id,
+                face_id: record.face_id,
+                status_name: record.attendance_status.status_name,
+                first_name: record.users?.first_name,
+                last_name: record.users?.last_name
+            }));
+        }
 
     // Find a record by ID
     static async findById (id) {

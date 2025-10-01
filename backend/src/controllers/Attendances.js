@@ -55,7 +55,11 @@ class Attendances {
     static async fetchByDate(req, res) {
         try {
             const { date } = req.params;
+            console.log('Date:', date );
+
             const records = await Attendance.findByDate(date);
+            
+            
             res.json(records);
         } catch (err) {
             res.status(500).json({ error: `Attendances fetchByDate Error ${err.message}` });
