@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://bio-pro-9pht.onrender.com";
+// const BASE_URL = "http://localhost:5000";
 
 // Registration API
 export async function uploadFace(image: string) {
