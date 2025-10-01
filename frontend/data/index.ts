@@ -1,21 +1,9 @@
-import { IconType } from 'react-icons';
-import { FaHome, FaFingerprint, FaIdCard, FaUserCircle  } from 'react-icons/fa';
+import { FaHome, FaFingerprint, FaIdCard } from 'react-icons/fa';
 import { GiArchiveRegister } from "react-icons/gi";
-import { IoNotifications } from "react-icons/io5";
 import { IoOptionsOutline } from "react-icons/io5";
 import { MdFace } from "react-icons/md";
 import { FiLogIn } from "react-icons/fi";
-import { GrUserAdmin } from "react-icons/gr";
 
-
-
-
-
-interface NavLink {
-    name: string;
-    path: string;
-    icons?: IconType;
-}
 
 export const navLinks = [
     {
@@ -60,12 +48,6 @@ export const options = [
     },
     
 ];
-
-// interface people {
-//     id: number;
-//     role: string;
-//     avatar: string;
-// }
 
 export const people = [
     {

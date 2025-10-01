@@ -25,10 +25,9 @@ export default function Home () {
   const fetchRecords = async () => {
     try {
       const today = new Date().toLocaleDateString("en-CA", {timeZone: "Asia/Manila"}).split("T")[0]; // YYYY-MM-DD
-      // const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+
       alert(today);
       const res = await fetch(`https://bio-pro-9pht.onrender.com/attendances/date/${today}`);
-      // const res = await fetch(`http://localhost:5000/attendances/date/${today}`);
 
       if (!res.ok) throw new Error("Failed to fetch records");
       const data = await res.json();

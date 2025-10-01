@@ -61,8 +61,7 @@ export default function RegisterForm() {
             onSubmit={handleSubmit}
             className="flex justify-between gap-4 p-4 w-full mx-auto"
          >
-              
-            {/** Face Capture Section */}        
+                     
             <div className="p-8 mt-0 shadow-lg rounded-lg">
                 <FaceCapture size={960} onCapture={handleFaceCapture}  />
             </div>

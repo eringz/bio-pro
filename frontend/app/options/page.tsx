@@ -7,7 +7,6 @@ export default function OptionsPage() {
     
     return (
         <main className="flex items-center my-96 min-w-screen">
-            {/* <h1 className="text-3xl font-bold mb-8">Attendance System</h1> */}
 
             <div className="flex flex-cols justify-around items-center w-full">
                 {options.map(({label, action, icon}) => {

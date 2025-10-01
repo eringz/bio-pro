@@ -1,17 +1,15 @@
 const BASE_URL = "https://bio-pro-9pht.onrender.com";
-// const BASE_URL = "http://localhost:5000";
 
 // Registration API
 export async function uploadFace(image: string) {
-    // return request(`${BASE_URL}/`, { image });
     return request("/api/face/upload", { image });
 }
 
 // Verify face (for attendance)
 export async function verifyFace(image: string) {
   return request(`${BASE_URL}/attendances`, {
-    user_id: 1,        // test muna
-    status_id: 0,      // "Time in"
+    user_id: 1,       
+    status_id: 0,      
     device_no: 1,
     face_id: 1,
     image,
