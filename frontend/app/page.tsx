@@ -5,21 +5,21 @@ import FaceCapture from "@/components/features/FaceCapture";
 import { verifyFace } from "@/lib/api/face";
 import { RxDownload } from "react-icons/rx";
 
+
+interface AttendanceRecord {
+  id: number;
+  user_id: number;
+  datetime: string;       // or Date, depende sa pag-parse mo
+  device_no: number;
+  status_id: number;
+  face_id?: string;
+  status_name: string;
+  first_name: string;
+  last_name: string;
+}
+
 export default function Home () {
-  const [records, setRecords] = useState<any[]>([]);
-  const [status, setStatus] = useState("");
-  const [time, setTime] = useState("");
-
-
-  const formatPHTime = (dateString: string): string => {
-    return new Date(dateString + "Z")
-      .toLocaleString("en-CA", {
-        timeZone: "Asia/Manila",
-        hour12: false,
-      })
-      .replace(",", "");
-  };
-
+  const [records, setRecords] = useState<AttendanceRecord[]>([]);
 
   // Fetch attendance today
   const fetchRecords = async () => {
@@ -69,7 +69,6 @@ export default function Home () {
       {/* Face Capture */}
       <div className="bg-white p-12 my-4 max-h-fit rounded-2xl shadow-lg hover:shadow-xl transition">
         <FaceCapture size={700} onCapture={handleCapture} />
-        {status && <p className="mt-4 text-lg text-center">{status}</p>}
       </div>
 
       {/* Attendance Announce Section */}

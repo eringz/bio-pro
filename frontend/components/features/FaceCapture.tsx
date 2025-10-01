@@ -13,14 +13,15 @@ export default function FaceCapture({ size, onCapture } : Props) {
     
     useEffect(() => {
 
+        const video = videoRef.current;
         // Start Camera
         const startCamera = async () => {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
-                if (videoRef.current) {
-                    videoRef.current.srcObject = stream;
-                    await videoRef.current.play();
+                if (video) {
+                    video.srcObject = stream;
+                    await video.play();
                 }
 
             } catch (err) {
@@ -31,8 +32,8 @@ export default function FaceCapture({ size, onCapture } : Props) {
         startCamera();
 
         return () => {
-            if (videoRef.current && videoRef.current.srcObject) {
-                const tracks = (videoRef.current.srcObject as MediaStream).getTracks();
+            if (video&& video.srcObject) {
+                const tracks = (video.srcObject as MediaStream).getTracks();
                 tracks.forEach((track) => track.stop());
             }
         }

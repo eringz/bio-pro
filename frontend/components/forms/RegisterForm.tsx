@@ -4,9 +4,10 @@ import { useState } from "react";
 import FaceCapture from "@/components/features/FaceCapture";
 import { registerUser } from "@/lib/api/face";
 import { people } from "@/data";
-import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 import { ChevronUpDownIcon } from "@heroicons/react/16/solid";
 import { CheckIcon } from "@heroicons/react/20/solid";
+import Image from "next/image";
 
 export default function RegisterForm() {
     const [form, setForm] = useState({
@@ -86,7 +87,7 @@ export default function RegisterForm() {
                             <span
                                 className="col-start-1 row-start-1 flex items-center gap-3 pr-6"
                             >
-                                <img alt="selected" src={selected.avatar} className="size-8 shrink-0 rounded-full bg-gray-100"/>
+                                <Image alt="selected" src={selected.avatar} className="size-8 shrink-0 rounded-full bg-gray-100"/>
                                 <span className="">{selected.role.charAt(0).toUpperCase() + selected.role.slice(1)}</span>
                             </span>
                             <ChevronUpDownIcon 
@@ -106,7 +107,7 @@ export default function RegisterForm() {
                                     className="group relative py-2 pr-9 pl-3 cursor-default text-gray-900 select-none data-focus:bg-indigo-600 data-focus:text-white data-focus:outline-hidden"
                                 >
                                     <div className="flex items-center">
-                                        <img alt={person.role} src={person.avatar} className="size-5 shrink-0 rounded-full" />
+                                        <Image alt={person.role} src={person.avatar} className="size-5 shrink-0 rounded-full" />
                                         <span className="ml-3 block truncate font-normal group-data-selected:font-semibold">{person.role.charAt(0).toUpperCase() + person.role.slice(1)}</span>
                                     </div>
 

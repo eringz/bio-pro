@@ -1,8 +1,6 @@
 "use client"
 
 import { options } from "@/data";
-import Link from "next/link";
-
 
 export default function OptionsPage() {
 
@@ -12,7 +10,7 @@ export default function OptionsPage() {
             {/* <h1 className="text-3xl font-bold mb-8">Attendance System</h1> */}
 
             <div className="flex flex-cols justify-around items-center w-full">
-                {options.map(({label, action, icon}, index) => {
+                {options.map(({label, action, icon}) => {
                     const Icon = icon;
                     return (
                         <div key={action} className="relative group">
