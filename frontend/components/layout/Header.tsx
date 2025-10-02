@@ -30,7 +30,7 @@ export default function Header() {
 
     return (
         <header className="py-2 xl:py-2">
-            <div className="container mx-auto flex justify-between sm:justify-around items-center">
+            <div className="container mx-auto flex justify-between xs:justify-around items-center">
                 <Link 
                     href="/"
                     className="text-3xl font-bold text-[#04246B]"    
