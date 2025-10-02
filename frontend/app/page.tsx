@@ -69,7 +69,7 @@ export default function Home () {
       </div>
 
       {/* Attendance Announce Section */}
-      <div className="w-full max-w-96 mx-auto bg-white p-6 my-4 rounded-2xl shadow-lg hover:shadow-xl transition">
+      <div className="w-full max-w-96 sm:max-w-4xl mx-auto bg-white p-6 my-4 rounded-2xl shadow-lg hover:shadow-xl transition">
         <div className="flex justify-between px-2 border">
           <h2 className="text-xl text-[#04246B] font-bold mb-4">{dateString} ({dayName}) </h2>
           <button className="text-[#04246B]">
