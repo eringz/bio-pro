@@ -38,7 +38,7 @@ export default function Header() {
 
     });
 
-    function classNames(...classes) {
+    function classNames(...classes: (string | undefined | null | false)[]): string {
         return classes.filter(Boolean).join(' ')
     }
 
@@ -86,7 +86,7 @@ export default function Header() {
                             <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
                         </DisclosureButton>
                     </div>
-                    <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start" >
+                    <div className="flex flex-1 items-center justify-cente r sm:items-stretch sm:justify-start" >
                         <div className="flex shrink-0 items-center" >
                             <img 
                                 alt="Bio Pro"
@@ -94,7 +94,35 @@ export default function Header() {
                                 className="h-8 w-auto"
                             />
                         </div>
-                        <div></div>
+                        <div className="hidden sm:ml-6 sm:block">
+                            <div className="flex space-x-4">
+                                {navigation.map((item) => {
+                                    return (
+                                        <Link
+                                            key={item.name}
+                                            href={item.href}
+                                            aria-current={item.current ? 'page' : undefined }
+                                            className={classNames(
+                                                item.current
+                                                ? 'bg-gray-900 text-white dark:bg-gray-950/50'
+                                                : 'text-gray-300 hover:bg-white/5 hover:text-white',
+                                                'rounded-md px-3 py-2 text-sm font-medium'
+                                            )}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                        <button
+                            type="button"
+                            className="relative rounded-full p-1 text-gray-400 focus:outline-2 focus:outline-offset-2 "
+                        >
+
+                        </button>
                     </div>
                 </div>
             </div>
