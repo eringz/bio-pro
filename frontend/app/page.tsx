@@ -64,7 +64,7 @@ export default function Home () {
   return (
     <main className="flex flex-cols gap-12 justify-between">
       {/* Face Capture */}
-      <div className="bg-white p-12 my-4 max-h-fit rounded-2xl shadow-lg hover:shadow-xl transition">
+      <div className="bg-white p-12 my-4 max-h-fit rounded-2xl shadow-lg hover:shadow-xl transition sm:bg-gray-500">
         <FaceCapture size={700} onCapture={handleCapture} />
       </div>
 
