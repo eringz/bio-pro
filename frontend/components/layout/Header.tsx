@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Nav from "../ui/Nav";
+import MobileNav from "../ui/MobileNav";
 
 export default function Header() {
     const [time, setTime] = useState("");
@@ -47,7 +48,11 @@ export default function Header() {
 
                 <div className="hidden xl:flex items-center">
                     <Nav />
-                </div>                
+                </div>   
+
+                <div className="xl:hidden">
+                
+                </div>             
             </div>
         </header>
     )
