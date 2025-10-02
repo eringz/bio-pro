@@ -51,7 +51,7 @@ export default function Header() {
                 </div>   
 
                 <div className="xl:hidden">
-                
+                    <MobileNav />
                 </div>             
             </div>
         </header>
