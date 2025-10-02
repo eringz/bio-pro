@@ -94,11 +94,10 @@ export default function Header() {
                                 className="h-8 w-auto"
                             />
                         </div>
+                        <div></div>
                     </div>
                 </div>
-
             </div>
-
         </Disclosure>
     )
 }
