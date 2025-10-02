@@ -62,15 +62,15 @@ export default function Home () {
 
 
   return (
-    <main className="gtid grid-cols-2 gap-12 justify-between sm:grid sm:grid-cols-1">
+    <main className="gtid grid-cols-2 gap-12 justify-between md:grid-cols-2 sm:grid-cols-1 ">
       {/* Face Capture */}
-      <div className="bg-white p-12 my-4 max-h-fit rounded-2xl shadow-lg hover:shadow-xl transition sm:bg-gray-500 md:bg-black">
+      <div className="bg-white p-12 my-4 max-h-fit  shadow-lg hover:shadow-xl transition sm:bg-gray-500 md:bg-black">
         <FaceCapture size={700} onCapture={handleCapture} />
       </div>
 
       {/* Attendance Announce Section */}
       <div className="w-full max-w-4xl mx-auto bg-white p-6 my-4 rounded-2xl shadow-lg hover:shadow-xl transition">
-        <div className="flex justify-between px-2">
+        <div className="flex justify-between px-2 border">
           <h2 className="text-xl text-[#04246B] font-bold mb-4">{dateString} ({dayName}) </h2>
           <button className="text-[#04246B]">
             <RxDownload size={25} />
