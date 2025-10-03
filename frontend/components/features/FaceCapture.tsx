@@ -58,7 +58,7 @@ export default function FaceCapture({ size, onCapture } : Props) {
 
     return (
         <div
-            className="flex flex-col items-center gap-4"
+            className="flex flex-col items-center p-6 max-w-2xl rounded-md shadow-lg gap-4 bg-white"
         >
             <video 
                 ref={videoRef}
@@ -78,7 +78,7 @@ export default function FaceCapture({ size, onCapture } : Props) {
                 <button
                     type="button"
                     onClick={captureFace}
-                    className="px-4 py-2 bg-[#006D5A] hover:bg-sky-700 text-white rounded-lg shadow"
+                    className="px-4 py-2 bg-[#022C42] hover:bg-[#014169] text-white rounded-lg shadow"
                 >
                     Capture Face
                 </button>

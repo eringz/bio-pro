@@ -64,26 +64,29 @@ export default function Home () {
   return (
     <main className="gtid grid-cols-2 gap-12 justify-between md:grid-cols-2 sm:grid-cols-1 ">
       {/* Face Capture */}
-      <div className="bg-white p-12 my-4 max-h-fit shadow-lg hover:shadow-xl transition sm:bg-gray-500 md:bg-black">
-        <FaceCapture size={700} onCapture={handleCapture} />
+      <div className="flex justify-center p-12 max-h-fit shadow-lg hover:shadow-xl transition">
+        <FaceCapture size={600} onCapture={handleCapture} />
       </div>
 
       {/* Attendance Announce Section */}
-      <div className="w-full max-w-96 sm:max-w-4xl mx-auto bg-white p-6 my-4 rounded-2xl shadow-lg hover:shadow-xl transition">
-        <div className="flex justify-between px-2 border">
-          <h2 className="text-xl text-[#04246B] font-bold mb-4">{dateString} ({dayName}) </h2>
+      <div className="w-full max-w-7xl mx-auto bg-white p-6 my-4 rounded-2xl shadow-lg hover:shadow-xl transition">
+        <div className="flex justify-between items-center px-2 border">
+          <h2 className="text-xl text-[#04246B] font-bold m-4 text-shadow-xs">{dateString} ({dayName}) </h2>
+          <input
+            type="text"
+            placeholder="Search by name..."
+            className="border rounded-md px-3  h-10 text-sm w-1/2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
           <button className="text-[#04246B]">
             <RxDownload size={25} />
           </button>
         </div>
-        
-
         {records.length === 0 ? (
           <p className="text-gray-500">No attendance yet.</p>
         ) : (
           <table className="min-w-full bg-white border border-gray-200 rounded shadow-xl">
             <thead>
-              <tr className="bg-gray-100 border-b">
+              <tr className="bg-gray-100 border-b tracking-widest">
                 <th className="py-2 px-4 text-left">ID</th>
                 <th className="py-2 px-4 text-left">Name</th>
                 <th className="py-2 px-4 text-left">Status</th>
@@ -94,8 +97,8 @@ export default function Home () {
               {records.map((r, i) => (
                 <tr key={i} className={`${(i % 2 === 0) ? 'bg-gray-200' : '' } border-b hover:bg-gray-50`}>
                   <td className="py-2 px-4">{i+1}</td>
-                  <td className="py-2 px-4">{r.first_name} {r.last_name}</td>
-                  <td className={`${(r.status_name === "Time In") ? 'text-[#006D5A]' : 'text-[#4C0000]'} "py-2 px-4"`}>{r.status_name}</td>
+                  <td className="py-2">{r.first_name} {r.last_name}</td>
+                  <td className={`${(r.status_name === "Time In") ? 'text-[#006D5A]' : 'text-[#4C0000]'} px-5`}>{r.status_name}</td>
                   <td className="py-2 px-4">{new Date(r.datetime).toLocaleTimeString("en-PH", {timeStyle: "short", timeZone: "Asia/Manila", hour12: false})}</td>
                 </tr>
               ))}

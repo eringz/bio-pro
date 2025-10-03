@@ -5,14 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import Nav from "../ui/Nav";
 import MobileNav from "../ui/MobileNav";
+import { usePathname } from "next/navigation";
 
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon  } from "@heroicons/react/24/outline";
 
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
+    { name: 'Dashboard', href: '/dashboard' },
+    { name: 'Attendance ', href: '/'},
 ];
 
 const menus = [
@@ -30,6 +30,7 @@ function classNames(...classes: (string | undefined | null | false)[]): string {
 
 export default function Header() {
     const [time, setTime] = useState("");
+    const pathname = usePathname();
 
     useEffect(() => {
         const updateClock = () => {
@@ -71,21 +72,21 @@ export default function Header() {
         //             {time}
         //         </Link>
 
-        //         <div className="hidden xl:flex items-center">
-        //             <Nav />
-        //         </div>   
+            //         <div className="hidden xl:flex items-center">
+            //             <Nav />
+            //         </div>   
 
-        //         <div className="xl:hidden">
-        //             <MobileNav />
-        //         </div>             
-        //     </div>
-        // </header>
+            //         <div className="xl:hidden">
+            //             <MobileNav />
+            //         </div>             
+            //     </div>
+            // </header>
         <Disclosure
             as="nav"
-            className="relative bg-gray-800 dark:bg-gray-800/50 dark:after:pointer-events-none dark:after:absolute dark:after:inset-x-0 dark:after:bottom-0 dark:after:h-px dark:after:bg-white/10"
+            className="relative bg-gray-800  dark:bg-gray-800/50 dark:after:pointer-events-none dark:after:absolute dark:after:inset-x-0 dark:after:bottom-0 dark:after:h-px dark:after:bg-white/10"
         >
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-                <div className="relative flex h-24 items-center justify-between">
+            <div className="mx-auto max-w-screen px-2 sm:px-6 lg:px-10">
+                <div className="relative flex h-20 items-center justify-between">
                     <div className="absolute inset-y-0 left-0 flex item-center sm:hidden">
                         {/** Mobile Nav */}
                         <DisclosureButton 
@@ -99,33 +100,32 @@ export default function Header() {
                     </div>
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex shrink-0 items-center">
-                        <img
-                            alt="Your Company"
-                            src="/bio-pro.png"
-                            className="h-8 md:h-12 sm:h-8 w-auto"
-                        />
-                        </div>
-                        <div className="hidden sm:ml-6 sm:block">
-                        <div className="flex space-x-4">
-                            {navigation.map((item) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                aria-current={item.current ? 'page' : undefined}
-                                className={classNames(
-                                item.current
-                                    ? 'bg-gray-900 text-white dark:bg-gray-950/50'
-                                    : 'text-gray-300 hover:bg-white/5 hover:text-white',
-                                'rounded-md px-3 py-2 text-sm font-medium',
-                                )}
-                            >
-                                {item.name}
+                            <Link href="/">
+                                <img
+                                    alt="Your Company"
+                                    src="/bio-pro.png"
+                                    className="h-16 w-16 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 object-contain"
+                                />
                             </Link>
-                            ))}
+                            
+                        </div>
+                        <div className="hidden  sm:ml-3  sm:block">
+                            <div className="flex items-center h-14 space-x-4 ">
+                                {navigation.map((item) => (
+                                    <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        className={`${item.href === pathname ? 'bg-gray-900 text-white dark:bg-gray-950/50' : 'text-gray-300 hover:bg-white/5 hover:text-white'}  rounded-md px-4 py-2 text-base font-medium flex items-center h-full `}
+
+                                    >
+                                        {item.name} 
+                                    </Link>
+                                ))}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <div className="absolute gap-4 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                        <span className="absolute p-2 text-xl -ml-39.5 text-white" >{time}</span>
                         <button
                             type="button"
                             className="relative rounded-full p-1 text-gray-400 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:hover:text-white"
@@ -176,13 +176,7 @@ export default function Header() {
                                 key={item.name}
                                 as="a"
                                 href={item.href}
-                                aria-current={item.current ? 'page' : undefined }
-                                className={classNames(
-                                    item.current
-                                        ? 'bg-gray-900 text-white dark:bg-gray-950/50'
-                                        : 'text-gray-300 hover:bg-white/5 hover:text-white',
-                                    'block rounded-md px-3 py-2 text-base font-medium',
-                                )}
+                                className={`${item.href === pathname ? 'bg-gray-900 text-white dark:bg-gray-950/50' : 'text-gray-300 hover:bg-white/5 hover:text-white'}  rounded-md px-4 py-2 text-base font-medium flex items-center h-full `}
                             >
                                 {item.name}
                             </DisclosureButton>
