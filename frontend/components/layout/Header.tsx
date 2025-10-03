@@ -2,9 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import Nav from "../ui/Nav";
-import MobileNav from "../ui/MobileNav";
 import { usePathname } from "next/navigation";
 
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
