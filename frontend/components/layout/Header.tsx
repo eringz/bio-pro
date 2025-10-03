@@ -131,10 +131,10 @@ export default function Header() {
             </div>
             <DisclosurePanel className="sm:hidden">
                 <div className="space-y-1 px-2 pt-2 pb-3">
-                    {navigation.map((item, id) => {
+                    {navigation.map((item, index) => {
                         return (
                             <DisclosureButton
-                                key={id}
+                                key={index}
                                 as="a"
                                 href={item.href}
                                 className={`${item.href === pathname ? 'bg-gray-900 text-white dark:bg-gray-950/50' : 'text-gray-300 hover:bg-white/5 hover:text-white'}  rounded-md px-4 py-2 text-base font-medium flex items-center h-full `}
