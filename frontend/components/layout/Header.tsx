@@ -25,9 +25,6 @@ function classNames(...classes: (string | undefined | null | false)[]): string {
     return classes.filter(Boolean).join(' ')
 }
 
-
-
-
 export default function Header() {
     const [time, setTime] = useState("");
     const pathname = usePathname();
@@ -51,36 +48,7 @@ export default function Header() {
 
     });
 
-    
-
-
     return (
-        // <header className="py-2 xl:py-2">
-        //     <div className="container mx-auto flex justify-between xs:justify-around items-center">
-        //         <Link 
-        //             href="/"
-        //             className="text-3xl font-bold text-[#04246B]"    
-        //         >
-        //             <Image 
-        //                 src="/bio-pro.png"
-        //                 alt="Bio Pro Logo"
-        //                 width={60}
-        //                 height={60}
-        //                 className="rounded-lg inline mr-8"
-        //                 priority
-        //             />
-        //             {time}
-        //         </Link>
-
-            //         <div className="hidden xl:flex items-center">
-            //             <Nav />
-            //         </div>   
-
-            //         <div className="xl:hidden">
-            //             <MobileNav />
-            //         </div>             
-            //     </div>
-            // </header>
         <Disclosure
             as="nav"
             className="relative bg-gray-800  dark:bg-gray-800/50 dark:after:pointer-events-none dark:after:absolute dark:after:inset-x-0 dark:after:bottom-0 dark:after:h-px dark:after:bg-white/10"
@@ -111,9 +79,9 @@ export default function Header() {
                         </div>
                         <div className="hidden  sm:ml-3  sm:block">
                             <div className="flex items-center h-14 space-x-4 ">
-                                {navigation.map((item) => (
+                                {navigation.map((item, id) => (
                                     <Link
-                                        key={item.name}
+                                        key={id}
                                         href={item.href}
                                         className={`${item.href === pathname ? 'bg-gray-900 text-white dark:bg-gray-950/50' : 'text-gray-300 hover:bg-white/5 hover:text-white'}  rounded-md px-4 py-2 text-base font-medium flex items-center h-full `}
 
@@ -170,10 +138,10 @@ export default function Header() {
             </div>
             <DisclosurePanel className="sm:hidden">
                 <div className="space-y-1 px-2 pt-2 pb-3">
-                    {navigation.map((item) => {
+                    {navigation.map((item, id) => {
                         return (
                             <DisclosureButton
-                                key={item.name}
+                                key={id}
                                 as="a"
                                 href={item.href}
                                 className={`${item.href === pathname ? 'bg-gray-900 text-white dark:bg-gray-950/50' : 'text-gray-300 hover:bg-white/5 hover:text-white'}  rounded-md px-4 py-2 text-base font-medium flex items-center h-full `}
