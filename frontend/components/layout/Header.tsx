@@ -79,9 +79,9 @@ export default function Header() {
                         </div>
                         <div className="hidden  sm:ml-3  sm:block">
                             <div className="flex items-center h-14 space-x-4 ">
-                                {navigation.map((item, id) => (
+                                {navigation.map((item, index) => (
                                     <Link
-                                        key={id}
+                                        key={index}
                                         href={item.href}
                                         className={`${item.href === pathname ? 'bg-gray-900 text-white dark:bg-gray-950/50' : 'text-gray-300 hover:bg-white/5 hover:text-white'}  rounded-md px-4 py-2 text-base font-medium flex items-center h-full `}
 
