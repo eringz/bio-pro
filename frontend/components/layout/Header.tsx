@@ -112,7 +112,7 @@ export default function Header() {
                             >
                                 {menus.map(({name, href}, index) => {
                                     return (
-                                        <MenuItem>
+                                        <MenuItem key={index}>
                                             <Link
                                                 key={index}
                                                 href={href}
