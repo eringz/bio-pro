@@ -30,7 +30,7 @@
 
 ## Architecture
 
-#Frontend Structure#
+Frontend Structure
 ```plaintext
 app/
 ├── login/
@@ -71,6 +71,7 @@ utils/
 ├── formatDate.ts
 └── helpers.ts
 
+```plaintext
 
  +----------------+        +----------------+        +----------------+
  |                |        |                |        |                |
