@@ -26,17 +26,11 @@
 - **APIs:** RESTful endpoints for attendance management
 - **Other Tools:** Git, GitHub Actions for CI/CD
 
-## Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-username/biopro.git
-cd biopro
-
 ---
 
-## Frontend Structure
+## Architecture
+
+#Frontend Structure#
 ```plaintext
 app/
 ├── login/
