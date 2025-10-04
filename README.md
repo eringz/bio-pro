@@ -28,16 +28,7 @@
 
 ---
 
-## Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-username/biopro.git
-cd biopro
-
 ## Frontend Structure
-
 ```plaintext
 app/
 ├── login/
@@ -108,3 +99,15 @@ utils/
 | - face_id                 |
 | - confidence_score        |
 +---------------------------+
+
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/biopro.git
+cd biopro
+
+
+
