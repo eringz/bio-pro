@@ -51,9 +51,9 @@ app/
 └── page.tsx                     # Landing page / redirect to login
 
 components/
-├── auth/                        # 🔐 System authentication
+├── auth/                        # System authentication
 │   └── LoginForm.tsx            # Email/password form for Admin/User
-├── authMethods/                 # 🕒 Attendance authentication (employees)
+├── authMethods/                 # Attendance authentication (employees)
 │   ├── FaceRecognition.tsx      # Face capture & verify
 │   ├── Fingerprint.tsx          # Fingerprint scan
 │   └── IDScan.tsx               # ID/QR scan
