@@ -36,6 +36,48 @@
 git clone https://github.com/your-username/biopro.git
 cd biopro
 
+## Frontend Structure
+
+```plaintext
+app/
+├── login/
+│   └── page.tsx                # System login (Admin/User only)
+├── dashboard/
+│   └── page.tsx                # Protected (system users only)
+├── record/
+│   └── page.tsx                 # Attendance check-in/out (employees only)
+├── reports/
+│   └── page.tsx                 # Protected
+├── users/
+│   └── page.tsx                 # Protected + Admin only
+├── settings/
+│   └── page.tsx                 # Protected
+├── layout.tsx                   # Main layout (Navbar + Sidebar)
+└── page.tsx                     # Landing page / redirect to login
+
+components/
+├── auth/                        # 🔐 System authentication
+│   └── LoginForm.tsx            # Email/password form for Admin/User
+├── authMethods/                 # 🕒 Attendance authentication (employees)
+│   ├── FaceRecognition.tsx      # Face capture & verify
+│   ├── Fingerprint.tsx          # Fingerprint scan
+│   └── IDScan.tsx               # ID/QR scan
+├── Navbar.tsx
+├── Sidebar.tsx
+├── ProtectedPage.tsx            # Wrapper for protected system routes
+└── ...                          # Other UI components
+
+lib/
+├── supabaseClient.ts            # Supabase client config
+├── auth.ts                      # System login/register/logout/session
+├── attendance.ts                # Attendance verification + record save
+├── reports.ts                   # Reports data
+└── users.ts                     # User CRUD + role management
+
+utils/
+├── formatDate.ts
+└── helpers.ts
+
 
  +----------------+        +----------------+        +----------------+
  |                |        |                |        |                |
