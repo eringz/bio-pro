@@ -122,6 +122,16 @@ git clone https://github.com/your-username/biopro.git
 cd biopro
 
 ---
+## Features
+
+- **Biometric Attendance Tracking:** Capture employee time-ins and time-outs via biometric devices.
+- **Multi-Location Support:** Track attendance from multiple devices and locations.
+- **Real-Time Dashboard:** Monitor employee presence and attendance statistics live.
+- **Role-Based Access:** Admin, HR, and Employee roles with custom permissions.
+- **Reports & Analytics:** Generate detailed attendance and performance reports.
+- **Face Recognition Integration (Planned):** Enhance security with facial recognition check-ins.
+
+---
 
 
 
