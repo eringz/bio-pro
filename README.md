@@ -32,7 +32,7 @@
 
 ### Frontend Structure
  
-```plaintext
+
 app/
 ├── login/
 │   └── page.tsx                # System login (Admin/User only)
@@ -74,4 +74,4 @@ utils/
 
 ### Backend Structure
 
-```plaintext
+
