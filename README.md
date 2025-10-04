@@ -8,46 +8,12 @@
 
 ## Features
 
-- **Biometric Attendance Tracking:** Capture employee time-ins and time-outs via biometric devices.
+- [] **Biometric Attendance Tracking:** Capture employee time-ins and time-outs via biometric devices.
 - **Multi-Location Support:** Track attendance from multiple devices and locations.
 - **Real-Time Dashboard:** Monitor employee presence and attendance statistics live.
 - **Role-Based Access:** Admin, HR, and Employee roles with custom permissions.
 - **Reports & Analytics:** Generate detailed attendance and performance reports.
 - **Face Recognition Integration (Planned):** Enhance security with facial recognition check-ins.
-
----
-
-+----------------+        +----------------+        +----------------+
- |                |        |                |        |                |
- |  Attendance    |        |  Face          |        |  Supabase DB   |
- |  Device/Camera | -----> |  Recognition   | -----> |                |
- |  (Scanner)     |        |  Module        |        |  Tables:       |
- |                |        |  (Python/JS)   |        |  - users       |
- +----------------+        +----------------+        |  - attendance  |
-        |                            |               |  - status      |
-        | Captured Face Image        | Match face    +----------------+
-        v                            | to templates
-+----------------+                    v
-|                |             +----------------+
-| Client Server  | <-----------| Face matched   |
-|  (Node.js +    |   user_id,  | user_id        |
-|   Express)     |   face_id,  | confidence     |
-|                |   confidence| score          |
-+----------------+             +----------------+
-        |
-        | Logs Attendance
-        v
-+---------------------------+
-| Attendance Table Record   |
-| - user_id                 |
-| - datetime (auto)         |
-| - status_id (Time In/Out) |
-| - device_no               |
-| - face_id                 |
-| - confidence_score        |
-+---------------------------+
-
-
 
 ---
 
