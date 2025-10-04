@@ -14,7 +14,7 @@
 - **Role-Based Access:** Admin, HR, and Employee roles with custom permissions.
 - **Reports & Analytics:** Generate detailed attendance and performance reports.
 - **Face Recognition Integration (Planned):** Enhance security with facial recognition check-ins.
-
+- [ ] hello
 ---
 
 ## Tech Stack
