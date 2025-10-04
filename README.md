@@ -60,17 +60,33 @@ components/
 │   ├── FaceRecognition.tsx      # Face capture & verify
 │   ├── Fingerprint.tsx          # Fingerprint scan
 │   └── IDScan.tsx               # ID/QR scan
-├── Navbar.tsx
-├── Sidebar.tsx
-├── ProtectedPage.tsx            # Wrapper for protected system routes
-└── ...                          # Other UI components
+├── layout/
+|   ├── Footer.tsx
+|   ├── Navbar.tsx
+|   ├── ProtectedPage.tsx
+|   └── Footer.tsx
+├── reports/
+|   ├── ReportChart.tsx
+|   └── ReportTable.tsx
+├── ui/
+|   ├── Button.tsx
+|   ├── Card.tsx
+|   ├── Input.tsx
+|   ├── Loader.tsx
+|   ├── Modal.tsx
+|   └── Table.tsx
+└── users
+    ├── AddUserForm.tsx
+    ├── EditUserModal.tsx
+    └── UserTable.tsx                         
 
 lib/
-├── supabaseClient.ts            # Supabase client config
-├── auth.ts                      # System login/register/logout/session
-├── attendance.ts                # Attendance verification + record save
-├── reports.ts                   # Reports data
-└── users.ts                     # User CRUD + role management
+├── routes/
+|   └── users.ts
+├── auth.ts                      
+├── attendance.ts                
+└── reports.ts                   
+                #
 
 utils/
 ├── formatDate.ts
