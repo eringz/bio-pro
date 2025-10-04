@@ -31,7 +31,8 @@
 ## Architecture
 
 ### Frontend Structure
- 
+
+ ``` plaintext
 
 app/
 ├── login/
