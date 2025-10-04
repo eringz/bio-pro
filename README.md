@@ -71,3 +71,7 @@ lib/
 utils/
 ├── formatDate.ts
 └── helpers.ts
+
+### Backend Structure
+
+```plaintext
