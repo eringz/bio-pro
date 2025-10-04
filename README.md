@@ -15,7 +15,9 @@
 - **Reports & Analytics:** Generate detailed attendance and performance reports.
 - **Face Recognition Integration (Planned):** Enhance security with facial recognition check-ins.
 
-   +----------------+        +----------------+        +----------------+
+---
+
++----------------+        +----------------+        +----------------+
  |                |        |                |        |                |
  |  Attendance    |        |  Face          |        |  Supabase DB   |
  |  Device/Camera | -----> |  Recognition   | -----> |                |
