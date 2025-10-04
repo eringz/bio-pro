@@ -101,7 +101,7 @@ utils/
 +---------------------------+
 
 ---
-## Installation
+## Frontend Structure
 
 1. Clone the repository:
 
