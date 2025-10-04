@@ -35,24 +35,27 @@
  ``` plaintext
 
 app/
-├── login/
-│   └── page.tsx                # System login (Admin/User only)
 ├── dashboard/
-│   └── page.tsx                # Protected (system users only)
+│   └── page.tsx                 # Protected (system users only)
+├──  login/
+│   └── page.tsx                 # System login (Admin/User only)
 ├── record/
 │   └── page.tsx                 # Attendance check-in/out (employees only)
+├── register/
+│   └── page.tsx  
 ├── reports/
+│   └── page.tsx                 # Protected
+├── settings/
 │   └── page.tsx                 # Protected
 ├── users/
 │   └── page.tsx                 # Protected + Admin only
-├── settings/
-│   └── page.tsx                 # Protected
 ├── layout.tsx                   # Main layout (Navbar + Sidebar)
 └── page.tsx                     # Landing page / redirect to login
 
 components/
 ├── auth/                        # System authentication
-│   └── LoginForm.tsx            # Email/password form for Admin/User
+│   ├── AdminLoginForm.tsx       # Email/password form for Admin/User
+|   └── AuthForm.tsx
 ├── authMethods/                 # Attendance authentication (employees)
 │   ├── FaceRecognition.tsx      # Face capture & verify
 │   ├── Fingerprint.tsx          # Fingerprint scan
