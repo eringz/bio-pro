@@ -100,7 +100,7 @@ utils/
 | - confidence_score        |
 +---------------------------+
 
-
+---
 ## Installation
 
 1. Clone the repository:
