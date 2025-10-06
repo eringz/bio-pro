@@ -18,7 +18,7 @@ const menus = [
     {name: 'Sign out', href: '#'}
 ]
 
-export default function Header() {
+export default function Navbar() {
     const [time, setTime] = useState("");
     const pathname = usePathname();
 
