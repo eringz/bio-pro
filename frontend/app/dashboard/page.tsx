@@ -1,5 +1,5 @@
 export default function Dashboard() {
     return (
-        <div>Dashboard Page</div>
+        <div>Dashboard Page update</div>
     )
 }
