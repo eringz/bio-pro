@@ -6,10 +6,10 @@ import { MdFace } from "react-icons/md";
 
 interface Props {
     size?: number;
-    onCapture: (facetemplate: string) => void
+    // onCapture: (facetemplate: string) => void
 }
 
-export default function FaceCard ({size, onCapture}: Props)
+export default function FaceCard ({size}: Props)
 {
     const videoRef = useRef<HTMLVideoElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);

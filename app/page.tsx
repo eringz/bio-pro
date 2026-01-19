@@ -2,8 +2,6 @@
 import { Button } from "@/components/ui/Button";
 import { useEffect, useState } from "react";
 import LoginCard from "@/components/cards/LoginCard";
-import FingerprintCard from "@/components/cards/FingerprintCard";
-import IdCard from "@/components/cards/IdCard";
 import FaceCard  from "@/components/cards/FaceCard";
 
 
@@ -70,20 +68,8 @@ export default function Home() {
         className="flex flex-1 items-center justify-center"
       >
         {activeCard === "login" && <LoginCard />}
-        {activeCard === "fingerprint" && <FingerprintCard />}
-        {activeCard === "id" && <IdCard />}
         {activeCard === "face" && <FaceCard />}
       </div>
-
-      {/** Buttons */}
-      {/* <div
-        className="mb-10 flex justify-center gap-4 "
-      >
-        <Button label="Login" onClick={() => setActiveCard("login")}></Button>
-        <Button label="Fingerprint" onClick={() => setActiveCard("fingerprint")}></Button>
-        <Button label="ID" onClick={() => setActiveCard("id")}></Button>
-        <Button label="Face Scan" onClick={() => setActiveCard("face")}></Button>
-      </div> */}
     </main>
   );
 }
