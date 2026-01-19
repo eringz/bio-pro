@@ -1,99 +1,36 @@
-# ![BioPro Logo](./frontend/public/bio-pro.ico) BioPro
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Getting Started
 
+First, run the development server:
 
-**BioPro** is a cutting-edge biometric attendance and employee management system designed to streamline workforce tracking and enhance organizational efficiency.
-
----
-
-## Features
-
-- [ ] **Biometric Attendance Tracking:** Capture employee time-ins and time-outs via biometric devices.
-- [ ] **Multi-Location Support:** Track attendance from multiple devices and locations.
-- [ ] **Real-Time Dashboard:** Monitor employee presence and attendance statistics live.
-- [ ] **Role-Based Access:** Admin, HR, and Employee roles with custom permissions.
-- [ ] **Reports & Analytics:** Generate detailed attendance and performance reports.
-- [ ] **Face Recognition Integration (Planned):** Enhance security with facial recognition check-ins.
-
----
-
-## Tech Stack
-
-- **Backend:** Node.js, Express.js
-- **Database:** Supabase (PostgreSQL)
-- **Frontend:** React.js / Next.js
-- **Authentication:** JWT & Role-Based Access Control
-- **APIs:** RESTful endpoints for attendance management
-- **Other Tools:** Git, GitHub Actions for CI/CD
-
----
-
-## Architecture
-
-### Frontend Structure
-
- ``` plaintext
-
-app/
-├── dashboard/
-│   └── page.tsx                 # Protected (system users only)
-├──  login/
-│   └── page.tsx                 # System login (Admin/User only)
-├── record/
-│   └── page.tsx                 # Attendance check-in/out (employees only)
-├── register/
-│   └── page.tsx  
-├── reports/
-│   └── page.tsx                 # Protected
-├── settings/
-│   └── page.tsx                 # Protected
-├── users/
-│   └── page.tsx                 # Protected + Admin only
-├── layout.tsx                   # Main layout (Navbar + Sidebar)
-└── page.tsx                     # Landing page / redirect to login
-
-components/
-├── auth/                        # System authentication
-│   ├── AdminLoginForm.tsx       # Email/password form for Admin/User
-|   └── AuthForm.tsx
-├── authMethods/                 # Attendance authentication (employees)
-│   ├── FaceRecognition.tsx      # Face capture & verify
-│   ├── Fingerprint.tsx          # Fingerprint scan
-│   └── IDScan.tsx               # ID/QR scan
-├── layout/
-|   ├── Footer.tsx
-|   ├── Navbar.tsx
-|   ├── ProtectedPage.tsx
-|   └── Footer.tsx
-├── reports/
-|   ├── ReportChart.tsx
-|   └── ReportTable.tsx
-├── ui/
-|   ├── Button.tsx
-|   ├── Card.tsx
-|   ├── Input.tsx
-|   ├── Loader.tsx
-|   ├── Modal.tsx
-|   └── Table.tsx
-└── users
-    ├── AddUserForm.tsx
-    ├── EditUserModal.tsx
-    └── UserTable.tsx                         
-
-lib/
-├── routes/
-|   └── users.ts
-├── auth.ts                      
-├── attendance.ts                
-└── reports.ts                   
-                #
-
-utils/
-├── formatDate.ts
-└── helpers.ts
-
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-### Backend Structure
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
